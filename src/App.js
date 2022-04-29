@@ -9,6 +9,7 @@ import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
 import NotFound from './pages/NotFound/NotFound';
 import RequireAuth from './pages/RequireAuth/RequireAuth';
+import Inventory from './pages/Inventory/Inventory';
 
 function App() {
   return (
@@ -16,7 +17,16 @@ function App() {
       <Header></Header>
       <Routes>
         <Route path='/' element={<Home></Home>}></Route>
-        <Route path='/manage-inventory' element={<ManageInventory></ManageInventory>}></Route>
+        <Route path='/manage-inventory' element={
+          <RequireAuth>
+            <ManageInventory></ManageInventory>
+          </RequireAuth>
+        }></Route>
+        <Route path='/inventory/:id' element={
+          <RequireAuth>
+            <Inventory></Inventory>
+          </RequireAuth>
+        }></Route>
         <Route path='/my-item' element={
           <RequireAuth>
             <MyItem></MyItem>

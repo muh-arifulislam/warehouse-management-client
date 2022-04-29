@@ -1,7 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Item.css';
 const Item = ({ item }) => {
-    const { name, img, quantity, id, sold, price, suplier, description } = item;
+    const { name, img, quantity, _id, sold, price, suplier, description } = item;
     return (
         <div className='col-lg-6 col-12'>
             <div className='item p-2 border d-flex align-items-center'>
@@ -15,7 +16,9 @@ const Item = ({ item }) => {
                     <p>Quantity: {quantity}</p>
                     <p>Sold: {sold}</p>
                     <p>description: {description}</p>
-                    <button className='btn btn-primary'>Deliver</button>
+                    <Link to={`/inventory/${_id}`}>
+                        <button className='btn btn-primary'>Manage Stock</button>
+                    </Link>
                 </div>
             </div>
         </div>

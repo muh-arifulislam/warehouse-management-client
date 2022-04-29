@@ -1,4 +1,5 @@
 import React from 'react';
+import useItem from '../../hooks/useItem';
 
 const ManageInventory = () => {
     return (

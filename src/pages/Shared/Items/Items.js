@@ -1,16 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import Item from '../Item/Item';
-
+import useItems from '../../../hooks/useItems'
 const Items = () => {
-    const [items, setItems] = useState([]);
-    useEffect(() => {
-        fetch('items.json')
-            .then(res => res.json())
-            .then(data => setItems(data))
-    }, [])
+    const [items, setItems] = useItems();
     return (
         <section className='container'>
-            <h2>this is item: {items.length}</h2>
+            <h2 className='text-center my-5'>Items</h2>
             <div className='row gy-3'>
                 {
                     items.map(item => <Item key={item._id} item={item}></Item>)
