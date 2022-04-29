@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 const Login = () => {
     const [
@@ -37,6 +37,9 @@ const Login = () => {
                 <input onBlur={handlePasswordBlur} className='d-block mb-2 w-100' type="password" name="password" placeholder='password' required />
                 <input className='d-block mb-2 w-100' type="submit" value="Login" />
             </form>
+            <div>
+                <p>Are you new? please register <Link to='/register'>Register</Link></p>
+            </div>
         </div>
     );
 };
