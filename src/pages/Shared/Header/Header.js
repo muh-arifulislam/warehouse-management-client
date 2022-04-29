@@ -2,11 +2,12 @@ import { signOut } from 'firebase/auth';
 import React from 'react';
 import { Container, Nav, Navbar } from 'react-bootstrap';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import auth from '../../../firebase.init';
 
 const Header = () => {
     const [user] = useAuthState(auth);
+    let { pathname } = useLocation();
     const handleSignOut = () => {
         signOut(auth)
             .then(() => {
@@ -31,7 +32,10 @@ const Header = () => {
                         <Nav>
                             <Link to='/my-item'>My Item</Link>
                             {
-                                user ? <button onClick={handleSignOut}>Log Out</button> : <Link to='/login'>Login</Link>
+                                user ? <button onClick={handleSignOut}>Log Out</button> :
+                                    pathname === '/login' ? <Link to='/register'>Register</Link> :
+                                        <Link to='/login'>Login</Link>
+
                             }
                         </Nav>
                     </Navbar.Collapse>

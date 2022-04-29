@@ -1,15 +1,15 @@
 import React from 'react';
 import { useState } from 'react';
-import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { signInWithEmailAndPassword } from "firebase/auth";
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { Button, Form } from 'react-bootstrap';
+import Loading from '../Loading/Loding';
 const Login = () => {
-    const [
-        signInWithEmailAndPassword,
-        user,
-        loading,
-        error,
-    ] = useSignInWithEmailAndPassword(auth);
+    const [user] = useAuthState(auth);
+    const [error, setError] = useState('');
+    const [loading, setLoading] = useState(false);
     // protected 
     let navigate = useNavigate();
     let location = useLocation();
@@ -23,24 +23,50 @@ const Login = () => {
     const handlePasswordBlur = (event) => {
         SetPassword(event.target.value);
     }
-    const handleSubmit = async event => {
+    const handleSubmit = event => {
         event.preventDefault();
-        await signInWithEmailAndPassword(email, password);
-        navigate(from, { replace: true });
+        setLoading(true);
+        signInWithEmailAndPassword(auth, email, password)
+            .then((res) => {
+                setLoading(false);
+                navigate(from, { replace: true });
+            })
+            .catch((error) => {
+                setError(error.message);
+                setLoading(false);
+            })
         event.target.reset();
+
     }
     return (
-        <div className='w-50 mx-auto'>
-            <h2>this is login page</h2>
-            <form onSubmit={handleSubmit}>
-                <input onBlur={handleEmailBlur} className='d-block mb-2 w-100' type="email" name='email' placeholder='your email' />
-                <input onBlur={handlePasswordBlur} className='d-block mb-2 w-100' type="password" name="password" placeholder='password' required />
-                <input className='d-block mb-2 w-100' type="submit" value="Login" />
-            </form>
-            <div>
-                <p>Are you new? please register <Link to='/register'>Register</Link></p>
-            </div>
-        </div>
+        <>
+            {
+                loading ? <Loading></Loading> :
+                    <div className='w-50 mx-auto p-3 border mt-5'>
+                        <h2 className='text-center'>Please Login!!</h2>
+                        <Form onSubmit={handleSubmit}>
+                            <Form.Group className="mb-3" controlId="formBasicEmail">
+                                <Form.Label>Email address</Form.Label>
+                                <Form.Control onBlur={handleEmailBlur} type="email" placeholder="Enter email" />
+                            </Form.Group>
+                            <Form.Group className="mb-3" controlId="formBasicPassword">
+                                <Form.Label>Password</Form.Label>
+                                <Form.Control onBlur={handlePasswordBlur} type="password" placeholder="Password" />
+                            </Form.Group>
+                            {/* error section  */}
+                            <div>
+                                <p className='text-danger'>{error && error}</p>
+                            </div>
+                            <div>
+                                <p>Are you new? please register <Link to='/register'>Register</Link></p>
+                            </div>
+                            <Button variant="primary" type="submit">
+                                Login
+                            </Button>
+                        </Form>
+                    </div>
+            }
+        </>
     );
 };
 
