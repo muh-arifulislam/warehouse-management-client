@@ -1,0 +1,62 @@
+[
+    {
+        "_id": "1",
+        "name": "Rice (50kg)",
+        "img": "https://images2.imgbox.com/33/88/FMZmtjO5_o.jpg",
+        "description": "this is rice its is very good gor health. we should eat rice every day.",
+        "price": 2600,
+        "quantity": 50,
+        "sold": 0,
+        "suplier": "National Rice Mil"
+    },
+    {
+        "_id": "2",
+        "name": "Rice (20kg)",
+        "img": "https://images2.imgbox.com/33/88/FMZmtjO5_o.jpg",
+        "description": "this is rice its is very good gor health. we should eat rice every day.",
+        "price": 1300,
+        "quantity": 50,
+        "sold": 0,
+        "suplier": "National Rice Mil"
+    },
+    {
+        "_id": "3",
+        "name": "Onion (50kg)",
+        "img": "https://images2.imgbox.com/33/88/FMZmtjO5_o.jpg",
+        "description": "this is rice its is very good gor health. we should eat rice every day.",
+        "price": 40000,
+        "quantity": 50,
+        "sold": 0,
+        "suplier": "National Rice Mil"
+    },
+    {
+        "_id": "4",
+        "name": "Sugar(50kg)",
+        "img": "https://images2.imgbox.com/33/88/FMZmtjO5_o.jpg",
+        "description": "this is rice its is very good gor health. we should eat rice every day.",
+        "price": 3000,
+        "quantity": 50,
+        "sold": 0,
+        "suplier": "National Rice Mil"
+    },
+    {
+        "_id": "5",
+        "name": "Oil (20kg)",
+        "img": "https://images2.imgbox.com/33/88/FMZmtjO5_o.jpg",
+        "description": "this is rice its is very good gor health. we should eat rice every day.",
+        "price": 3000,
+        "quantity": 50,
+        "sold": 0,
+        "suplier": "National Rice Mil"
+    },
+    {
+        "_id": "6",
+        "name": "Lantil (20kg)",
+        "img": "https://images2.imgbox.com/33/88/FMZmtjO5_o.jpg",
+        "description": "this is rice its is very good gor health. we should eat rice every day.",
+        "price": 1300,
+        "quantity": 50,
+        "sold": 0,
+        "suplier": "National Rice Mil"
+    }
+]
