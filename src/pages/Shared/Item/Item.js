@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { Children } from 'react';
 import { Link } from 'react-router-dom';
 import './Item.css';
-const Item = ({ item }) => {
+const Item = ({ item, children }) => {
     const { name, img, quantity, _id, sold, price, suplier, description } = item;
     return (
         <div className='col-lg-6 col-12'>
@@ -16,9 +16,9 @@ const Item = ({ item }) => {
                     <p>Quantity: {quantity}</p>
                     <p>Sold: {sold}</p>
                     <p>description: {description}</p>
-                    <Link to={`/inventory/${_id}`}>
-                        <button className='btn btn-primary'>Manage Stock</button>
-                    </Link>
+                    {
+                        children
+                    }
                 </div>
             </div>
         </div>

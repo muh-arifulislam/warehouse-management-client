@@ -1,15 +1,10 @@
 import { useState, useEffect } from 'react';
 const useItem = (id) => {
-    const [items, setItems] = useState([]);
     const [item, setItem] = useState({});
     useEffect(() => {
-        fetch('items.json')
+        fetch(`http://localhost:3000/item/${id}`)
             .then(res => res.json())
-            .then(data => setItems(data))
-    }, []);
-    useEffect(() => {
-        const i = items.find(item => item._id === '4');
-        console.log(i);
+            .then(data => setItem(data))
     }, []);
     return [item, setItem];
 }
