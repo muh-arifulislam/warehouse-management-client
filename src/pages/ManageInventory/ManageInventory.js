@@ -1,31 +1,64 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Button, Modal } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import useItem from '../../hooks/useItem';
 import useItems from '../../hooks/useItems';
 import ManageItem from '../ManageItem/ManageItem';
 import './ManageInventory.css';
 const ManageInventory = () => {
     const [items, setItems] = useItems();
+    const [show, setShow] = useState(false);
+    const [deleteProcess, setDeleteProcess] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
     const handleDeleteItem = (id) => {
-        fetch(`http://localhost:5000/item/${id}`, {
-            method: 'DELETE',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify({})
-        })
-            .then(res => res.json())
-            .then(data => {
-                if (data.deletedCount > 0) {
-                    const remainItem = items.filter(item => item._id !== id);
-                    setItems(remainItem);
-                }
-            })
+        handleShow();
+        if (deleteProcess) {
+            console.log('you may go now', id)
+        }
+        // fetch(`http://localhost:5000/item/${id}`, {
+        //     method: 'DELETE',
+        //     headers: {
+        //         'content-type': 'application/json'
+        //     },
+        //     body: JSON.stringify({})
+        // })
+        //     .then(res => res.json())
+        //     .then(data => {
+        //         if (data.deletedCount > 0) {
+        //             const remainItem = items.filter(item => item._id !== id);
+        //             setItems(remainItem);
+        //         }
+        //     })
+        setDeleteProcess(false);
     }
     return (
         <div className='container manange-inventory-container'>
+            {/* modal  */}
+            <>
+                <Modal show={show} onHide={handleClose}>
+                    <Modal.Header closeButton>
+                        <Modal.Title className='text-danger'>Warning!!!</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body style={{ color: 'black' }}>Are you sure to delete the item?</Modal.Body>
+                    <Modal.Footer>
+                        <Button variant="secondary" onClick={handleClose}>
+                            Close
+                        </Button>
+                        <Button variant="danger" onClick={() => {
+                            setDeleteProcess(true);
+                            handleClose();
+                        }}>
+                            Delete
+                        </Button>
+                    </Modal.Footer>
+                </Modal>
+            </>
             <h1 className='my-5 text-center'>Manage Item</h1>
             <div className='manage-btn-container p-3 d-flex justify-content-center'>
-                <button className='py-2 px-5' style={{ fontSize: '20px' }}>Add New Item</button>
+                <Link to='/add-new-item'>
+                    <button className='py-2 px-5' style={{ fontSize: '20px' }}>Add New Item</button>
+                </Link>
             </div>
             <div className='row manange-inventory'>
                 {

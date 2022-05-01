@@ -10,6 +10,7 @@ import Register from './pages/Register/Register';
 import NotFound from './pages/NotFound/NotFound';
 import RequireAuth from './pages/RequireAuth/RequireAuth';
 import Inventory from './pages/Inventory/Inventory';
+import AddItem from './pages/AddItem/AddItem';
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
         <Route path='/blog' element={<Blog></Blog>}></Route>
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/register' element={<Register></Register>}></Route>
+        <Route path='/add-new-item' element={<AddItem></AddItem>}></Route>
         <Route path='*' element={<NotFound></NotFound>}></Route>
       </Routes>
     </div>
