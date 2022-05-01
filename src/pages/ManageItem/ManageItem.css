@@ -1,0 +1,10 @@
+.manage-item-row:hover .manage-item {
+    background-color: aqua;
+}
+
+.delete-item:hover {
+    background-color: red;
+    color: white;
+    cursor: pointer;
+
+}

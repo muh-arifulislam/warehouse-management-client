@@ -13,7 +13,7 @@ import Inventory from './pages/Inventory/Inventory';
 
 function App() {
   return (
-    <div>
+    <div className='App'>
       <Header></Header>
       <Routes>
         <Route path='/' element={<Home></Home>}></Route>

@@ -4,7 +4,7 @@ import { Container, Nav, Navbar } from 'react-bootstrap';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link, useLocation } from 'react-router-dom';
 import auth from '../../../firebase.init';
-
+import './Header.css';
 const Header = () => {
     const [user] = useAuthState(auth);
     let { pathname } = useLocation();
@@ -18,7 +18,7 @@ const Header = () => {
             });
     }
     return (
-        <div>
+        <div className='header'>
             <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
                 <Container>
                     <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
