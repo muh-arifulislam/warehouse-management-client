@@ -7,30 +7,30 @@ import ManageItem from '../ManageItem/ManageItem';
 import './ManageInventory.css';
 const ManageInventory = () => {
     const [items, setItems] = useItems();
+    const [selectedItem, setSelectedItem] = useState('');
     const [show, setShow] = useState(false);
     const [deleteProcess, setDeleteProcess] = useState(false);
     const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+    const handleShow = (id) => {
+        setShow(true);
+        setSelectedItem(id);
+    };
     const handleDeleteItem = (id) => {
-        handleShow();
-        if (deleteProcess) {
-            console.log('you may go now', id)
-        }
-        // fetch(`http://localhost:5000/item/${id}`, {
-        //     method: 'DELETE',
-        //     headers: {
-        //         'content-type': 'application/json'
-        //     },
-        //     body: JSON.stringify({})
-        // })
-        //     .then(res => res.json())
-        //     .then(data => {
-        //         if (data.deletedCount > 0) {
-        //             const remainItem = items.filter(item => item._id !== id);
-        //             setItems(remainItem);
-        //         }
-        //     })
-        setDeleteProcess(false);
+        fetch(`http://localhost:5000/item/${id}`, {
+            method: 'DELETE',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify({})
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.deletedCount > 0) {
+                    const remainItem = items.filter(item => item._id !== id);
+                    setItems(remainItem);
+                }
+            })
+
     }
     return (
         <div className='container manange-inventory-container'>
@@ -46,8 +46,8 @@ const ManageInventory = () => {
                             Close
                         </Button>
                         <Button variant="danger" onClick={() => {
-                            setDeleteProcess(true);
                             handleClose();
+                            handleDeleteItem(selectedItem);
                         }}>
                             Delete
                         </Button>
@@ -62,7 +62,7 @@ const ManageInventory = () => {
             </div>
             <div className='row manange-inventory'>
                 {
-                    items.map(item => <ManageItem key={item._id} handleDeleteItem={handleDeleteItem} item={item}></ManageItem>)
+                    items.map(item => <ManageItem key={item._id} handleShow={handleShow} item={item}></ManageItem>)
                 }
             </div>
         </div>
