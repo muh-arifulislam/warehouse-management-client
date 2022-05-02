@@ -1,9 +1,14 @@
+.manage-item-row {
+    border-top: 1px solid #EDBF69;
+}
+
 .manage-item-row:hover .manage-item {
-    background-color: aqua;
+    background-color: #696969;
+    color: white;
 }
 
 .delete-item:hover {
-    background-color: red;
+    background-color: #E21717;
     color: white;
     cursor: pointer;
 

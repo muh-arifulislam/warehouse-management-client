@@ -5,7 +5,7 @@ const Item = ({ item, children }) => {
     const { name, img, quantity, _id, sold, price, suplier, description } = item;
     return (
         <div className='col-lg-6 col-12'>
-            <div className='item p-2 border d-flex align-items-center'>
+            <div className='item p-3 d-flex align-items-center'>
                 <div className='item-img'>
                     <img width={280} src={img} alt="" />
                 </div>

@@ -1,56 +1,83 @@
 [
     {
-        "name": "Rice (50kg)",
-        "img": "https://images2.imgbox.com/33/88/FMZmtjO5_o.jpg",
+        "name": "Miniket Rice (50kg)",
+        "img": "https://images2.imgbox.com/5c/62/R6mCvaR4_o.png",
         "description": "this is rice its is very good gor health. we should eat rice every day.",
-        "price": 2600,
+        "price": 3200,
         "quantity": 50,
         "sold": 0,
-        "suplier": "National Rice Mil"
+        "suplier": "PRAN"
     },
     {
-        "name": "Rice (20kg)",
-        "img": "https://images2.imgbox.com/33/88/FMZmtjO5_o.jpg",
+        "name": "Najir Shail Rice (50kg)",
+        "img": "https://images2.imgbox.com/e7/96/DCR7AR2k_o.png",
         "description": "this is rice its is very good gor health. we should eat rice every day.",
-        "price": 1300,
+        "price": 3500,
         "quantity": 50,
         "sold": 0,
-        "suplier": "National Rice Mil"
+        "suplier": "Rupchada"
+    },
+    {
+        "name": "Bashmati Rice (20kg)",
+        "img": "https://images2.imgbox.com/72/24/MXbqhlmN_o.png",
+        "description": "this is rice its is very good gor health. we should eat rice every day.",
+        "price": 2200,
+        "quantity": 50,
+        "sold": 0,
+        "suplier": "NAZ HS INC"
+    },
+    {
+        "name": "Muri (50kg)",
+        "img": "https://images2.imgbox.com/33/7e/3wFJWQ9j_o.png",
+        "description": "this is rice its is very good gor health. we should eat rice every day.",
+        "price": 2400,
+        "quantity": 50,
+        "sold": 0,
+        "suplier": "Green Product"
+    },
+    {
+        "name": "Soabin Oil (5kg)",
+        "img": "https://images2.imgbox.com/ef/73/kYsecq73_o.png",
+        "description": "this is rice its is very good gor health. we should eat rice every day.",
+        "price": 800,
+        "quantity": 50,
+        "sold": 0,
+        "suplier": "Fresh"
     },
     {
         "name": "Onion (50kg)",
-        "img": "https://images2.imgbox.com/33/88/FMZmtjO5_o.jpg",
+        "img": "https://images2.imgbox.com/ec/8f/LUdmZGtM_o.png",
         "description": "this is rice its is very good gor health. we should eat rice every day.",
-        "price": 40000,
+        "price": 2350,
         "quantity": 50,
         "sold": 0,
-        "suplier": "National Rice Mil"
+        "suplier": "Mama Bhagina Traders"
     },
     {
-        "name": "Sugar(50kg)",
-        "img": "https://images2.imgbox.com/33/88/FMZmtjO5_o.jpg",
+        "name": "Lentils (50kg)",
+        "img": "https://images2.imgbox.com/73/d7/P01fEFp8_o.png",
         "description": "this is rice its is very good gor health. we should eat rice every day.",
-        "price": 3000,
+        "price": 4680,
         "quantity": 50,
         "sold": 0,
-        "suplier": "National Rice Mil"
+        "suplier": "Mama Bhagina Traders"
     },
     {
-        "name": "Oil (20kg)",
-        "img": "https://images2.imgbox.com/33/88/FMZmtjO5_o.jpg",
+        "name": "Garlic (50kg)",
+        "img": "https://images2.imgbox.com/da/ce/pJD8dtgc_o.png",
         "description": "this is rice its is very good gor health. we should eat rice every day.",
-        "price": 3000,
+        "price": 3600,
         "quantity": 50,
         "sold": 0,
-        "suplier": "National Rice Mil"
+        "suplier": "Mama Bhagina Traders"
     },
     {
-        "name": "Lantil (20kg)",
-        "img": "https://images2.imgbox.com/33/88/FMZmtjO5_o.jpg",
+        "name": "Suger (50kg)",
+        "img": "https://images2.imgbox.com/92/5d/3R00Oqxz_o.jpg",
         "description": "this is rice its is very good gor health. we should eat rice every day.",
-        "price": 1300,
+        "price": 4700,
         "quantity": 50,
         "sold": 0,
-        "suplier": "National Rice Mil"
+        "suplier": "Green Product"
     }
 ]

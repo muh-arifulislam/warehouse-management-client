@@ -1,9 +1,9 @@
 import React from 'react';
 import { Spinner } from 'react-bootstrap';
-
+import './Loading.css';
 const Loading = () => {
     return (
-        <div className='d-flex justify-content-center mt-5'>
+        <div className='d-flex justify-content-center loading-container'>
             <Spinner animation="border" role="status">
                 <span className="visually-hidden">Loading...</span>
             </Spinner>

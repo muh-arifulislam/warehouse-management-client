@@ -40,7 +40,7 @@ const Register = () => {
         <>
             {
                 (loading || updating) ? <Loading></Loading> :
-                    <div className='w-50 mx-auto p-3 border mt-5'>
+                    <div className='w-50 mx-auto p-3 form-container mt-5'>
                         <h2 className='text-center'>Please Register</h2>
                         <Form onSubmit={handleSubmit}>
                             <Form.Group className="mb-3" controlId="formBasicEmail">

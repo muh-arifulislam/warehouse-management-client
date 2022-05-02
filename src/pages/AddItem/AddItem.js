@@ -10,7 +10,7 @@ const AddItem = () => {
     const [loading, setLoading] = useState(false);
     const onSubmit = (data, event) => {
         setLoading(true);
-        fetch('http://localhost:5000/item', {
+        fetch('https://limitless-falls-03357.herokuapp.com/item', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -28,7 +28,7 @@ const AddItem = () => {
             })
     };
     return (
-        <div className='custom-responsive-w mx-auto mt-3 px-4 py-2 border'>
+        <div className='custom-responsive-w form-container mx-auto mt-3 px-4 py-2'>
             {
                 loading && <Loading></Loading>
             }

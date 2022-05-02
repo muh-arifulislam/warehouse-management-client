@@ -15,7 +15,7 @@ const MyItem = () => {
         setSelectedItem(id);
     };
     useEffect(() => {
-        fetch(`http://localhost:5000/item?email=${user.email}`)
+        fetch(`https://limitless-falls-03357.herokuapp.com/item?email=${user.email}`)
             .then(res => res.json())
             .then(data => setMyItem(data))
     }, [user]);
@@ -27,7 +27,7 @@ const MyItem = () => {
         );
     }
     const handleDeleteItem = (id) => {
-        fetch(`http://localhost:5000/item/${id}`, {
+        fetch(`https://limitless-falls-03357.herokuapp.com/item/${id}`, {
             method: 'DELETE',
             headers: {
                 'content-type': 'application/json'
@@ -65,7 +65,7 @@ const MyItem = () => {
                     </Modal.Footer>
                 </Modal>
             </>
-            <h2>this is my item {myItem.length}</h2>
+            <h2 className='text-center mt-2 mb-5'>My Item</h2>
             {
                 myItem.map(item => <ManageItem key={item._id} handleShow={handleShow} item={item}></ManageItem>)
             }

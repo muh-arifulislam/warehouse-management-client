@@ -4,6 +4,8 @@ import { Container, Nav, Navbar } from 'react-bootstrap';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link, useLocation } from 'react-router-dom';
 import auth from '../../../firebase.init';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faUser, faWarehouse } from '@fortawesome/free-solid-svg-icons'
 import './Header.css';
 const Header = () => {
     const [user] = useAuthState(auth);
@@ -18,30 +20,38 @@ const Header = () => {
             });
     }
     return (
-        <div className='header'>
-            <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+        <header>
+            <Navbar className=' py-3 ' collapseOnSelect expand="lg">
                 <Container>
-                    <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+                    <Navbar.Brand href="/" ><FontAwesomeIcon className='me-1 fs-4' icon={faWarehouse}></FontAwesomeIcon><span className='site-heading fs-4'>BISMILLAH TRADERS</span></Navbar.Brand>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="me-auto">
-                            <Link to='/'>Home</Link>
-                            <Link to='/manage-inventory'>Manage Inventory</Link>
-                            <Link to='/blog'>Blog</Link>
+                            <Link className='custom-nav-item' to='/'>Home</Link>
+                            <Link className='custom-nav-item' to='/manage-inventory'>Manage Inventory</Link>
+                            <Link className='custom-nav-item' to='/blog'>Blog</Link>
                         </Nav>
                         <Nav>
-                            <Link to='/my-item'>My Item</Link>
                             {
-                                user ? <button onClick={handleSignOut}>Log Out</button> :
-                                    pathname === '/login' ? <Link to='/register'>Register</Link> :
-                                        <Link to='/login'>Login</Link>
+                                user && <>
+                                    <Link className='custom-nav-item' to='/add-new-item'>Add Item</Link>
+                                    <Link className='custom-nav-item' to='/my-item'>My Item</Link>
+                                </>
+                            }
+                            {
+                                user ? <button className='auth-btn' onClick={handleSignOut}>Log Out</button> :
+                                    pathname === '/login' ? <Link className='auth-btn' to='/register'>Register</Link> :
+                                        <Link className='auth-btn' to='/login'>Login</Link>
 
+                            }
+                            {
+                                user && <Link id='user-btn' to='/user'><FontAwesomeIcon icon={faUser}></FontAwesomeIcon></Link>
                             }
                         </Nav>
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
-        </div>
+        </header>
     );
 };
 

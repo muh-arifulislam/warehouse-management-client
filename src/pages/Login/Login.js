@@ -6,6 +6,7 @@ import auth from '../../firebase.init';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Button, Form } from 'react-bootstrap';
 import Loading from '../Loading/Loding';
+import './Login.css';
 const Login = () => {
     const [user] = useAuthState(auth);
     const [error, setError] = useState('');
@@ -42,7 +43,7 @@ const Login = () => {
         <>
             {
                 loading ? <Loading></Loading> :
-                    <div className='w-50 mx-auto p-3 border mt-5'>
+                    <div className='w-50 mx-auto form-container p-3 mt-5'>
                         <h2 className='text-center'>Please Login!!</h2>
                         <Form onSubmit={handleSubmit}>
                             <Form.Group className="mb-3" controlId="formBasicEmail">

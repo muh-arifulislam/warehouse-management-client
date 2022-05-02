@@ -11,7 +11,7 @@ const Inventory = () => {
     const [modifiedCount, setModifiedCount] = useState(0);
     const [loading, setLoading] = useState(false);
     useEffect(() => {
-        fetch(`http://localhost:5000/item/${id}`)
+        fetch(`https://limitless-falls-03357.herokuapp.com/item/${id}`)
             .then(res => res.json())
             .then(data => setItem(data))
     }, [modifiedCount]);
@@ -19,7 +19,7 @@ const Inventory = () => {
         const newQuantity = parseInt(item.quantity) - 1;
         const newSold = parseInt(item.sold) + 1;
         setLoading(true);
-        fetch(`http://localhost:5000/item/${id}`, {
+        fetch(`https://limitless-falls-03357.herokuapp.com/item/${id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
@@ -45,7 +45,7 @@ const Inventory = () => {
         setLoading(true);
         const newQuantity = parseInt(item.quantity) + parseInt(newItemQuantity);
         const newSold = parseInt(item.sold);
-        fetch(`http://localhost:5000/item/${id}`, {
+        fetch(`https://limitless-falls-03357.herokuapp.com/item/${id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
