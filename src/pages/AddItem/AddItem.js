@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from "react-hook-form";
+import auth from '../../firebase.init';
 import Loading from '../Loading/Loding';
 import './AddItem.css';
 const AddItem = () => {
+    const [user] = useAuthState(auth);
     const { register, handleSubmit } = useForm();
     const [loading, setLoading] = useState(false);
-    const onSubmit = data => {
+    const onSubmit = (data, event) => {
         setLoading(true);
         fetch('http://localhost:5000/item', {
             method: 'POST',
@@ -18,7 +21,8 @@ const AddItem = () => {
             .then(data => {
                 console.log(data);
                 setTimeout(() => {
-                    setLoading(false)
+                    event.target.reset();
+                    setLoading(false);
                 }, 1000)
 
             })
@@ -31,6 +35,7 @@ const AddItem = () => {
             <h2 className='text-center my-2'>Add New Item</h2>
             <form className='' onSubmit={handleSubmit(onSubmit)}>
                 <input className='d-block mb-3 px-2 py-2 w-100' placeholder='enter item name' {...register("name")} required />
+                <input className='d-block mb-3 px-2 py-2 w-100' value={user?.email} {...register("email")} readOnly />
                 <input className='d-block mb-3 px-2 py-2 w-100' placeholder='enter item img url' {...register("img")} required />
                 <textarea className='d-block mb-3 px-2 py-2 w-100' placeholder='enter item description' {...register("description")} required />
                 <input className='d-block mb-3 px-2 py-2 w-100' placeholder='enter item price' {...register("price")} required />
