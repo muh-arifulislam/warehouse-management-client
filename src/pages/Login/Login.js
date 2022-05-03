@@ -3,12 +3,13 @@ import { useState } from 'react';
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
-import { useAuthState } from 'react-firebase-hooks/auth';
+import { useAuthState, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { Button, Form } from 'react-bootstrap';
 import Loading from '../Loading/Loding';
 import './Login.css';
+import SocialLogin from '../Shared/SocialLogin/SocialLogin';
 const Login = () => {
-    const [user] = useAuthState(auth);
+    const [signInWithGoogle, user, loading1, error1] = useSignInWithGoogle(auth);
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
     // protected 
@@ -39,6 +40,12 @@ const Login = () => {
         event.target.reset();
 
     }
+    const handleGoogleSignIn = async () => {
+        await signInWithGoogle();
+        if (!error1) {
+            navigate(from, { replace: true })
+        }
+    }
     return (
         <>
             {
@@ -65,6 +72,8 @@ const Login = () => {
                                 Login
                             </Button>
                         </Form>
+                        {/* social login area  */}
+                        <SocialLogin handleGoogleSignIn={handleGoogleSignIn}></SocialLogin>
                     </div>
             }
         </>

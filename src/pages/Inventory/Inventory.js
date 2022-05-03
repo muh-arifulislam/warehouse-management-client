@@ -71,12 +71,19 @@ const Inventory = () => {
                         <Item item={item}>
                             <button onClick={handleDelivered} className='btn btn-primary'>Delivered</button>
                         </Item>
-                        <div className='restock-container p-3 border mt-5 mx-3'>
+                        <div className='restock-container form-container p-3 mt-5 mx-3'>
                             <h3 className='text-center'>Restock {item.name}</h3>
                             <form className='mt-3' onSubmit={handleRestock}>
-                                <input onBlur={handleNewItemQuantity} className='d-block w-75 mx-auto mb-3' type="number" name="stockedItem" id="" placeholder='enter new stocked number' />
+                                <input onBlur={handleNewItemQuantity} className='d-block w-75 mx-auto mb-3' type="number" name="stockedItem" id="" placeholder='enter how many want to stocked' />
                                 <input className='d-block w-25 mx-auto mb-3' type="submit" value="Restock" />
                             </form>
+                        </div>
+                        <div className='d-flex justify-content-center mt-5'>
+                            <Link to='/manage-inventory'>
+                                <button className='custom-btn py-3 px-3 fs-5'>
+                                    Manage Inventory
+                                </button>
+                            </Link>
                         </div>
                     </div>
             }
