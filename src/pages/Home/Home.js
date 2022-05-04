@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import MyCarousel from '../MyCarousel/MyCarousel';
 import Items from '../Shared/Items/Items';
+import SentEmail from './SentEmail/SentEmail';
 
 const Home = () => {
     return (
@@ -15,6 +16,7 @@ const Home = () => {
                     </button>
                 </Link>
             </div>
+            <SentEmail></SentEmail>
         </div>
     );
 };

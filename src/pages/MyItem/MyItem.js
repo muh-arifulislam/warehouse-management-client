@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Modal } from 'react-bootstrap';
-import { useAuthState } from 'react-firebase-hooks/auth';
+import { useAuthState, useSendEmailVerification } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
+import Loading from '../Loading/Loding';
 import ManageItem from '../ManageItem/ManageItem';
 
 const MyItem = () => {
+    const [sendEmailVerification, sending, error] = useSendEmailVerification(auth);
     const [user] = useAuthState(auth);
     const [myItem, setMyItem] = useState([]);
     const [selectedItem, setSelectedItem] = useState('');
@@ -19,13 +21,6 @@ const MyItem = () => {
             .then(res => res.json())
             .then(data => setMyItem(data))
     }, [user]);
-    if (!user.emailVerified) {
-        return (
-            <div>
-                <h2>your email is not varified</h2>
-            </div>
-        );
-    }
     const handleDeleteItem = (id) => {
         fetch(`https://limitless-falls-03357.herokuapp.com/item/${id}`, {
             method: 'DELETE',
@@ -42,6 +37,25 @@ const MyItem = () => {
                 }
             })
 
+    }
+    const handleEmailVerification = async () => {
+        await sendEmailVerification();
+        alert('sent');
+    }
+    if (!user.emailVerified) {
+        return (
+            <div style={{ height: '400px', padding: '100px 0' }}>
+                {
+                    sending ? <Loading></Loading> :
+                        <>
+                            <h2 className='text-center'>your email is not varified!!</h2>
+                            <div className='d-flex justify-content-center mt-3'>
+                                <button onClick={handleEmailVerification} className='custom-btn'>resent verification</button>
+                            </div>
+                        </>
+                }
+            </div>
+        );
     }
     return (
         <div className='container mt-3'>

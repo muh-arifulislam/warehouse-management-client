@@ -1,11 +1,16 @@
 import React, { useRef, useState } from 'react';
 import { Button, Form, Spinner } from 'react-bootstrap';
-import { useCreateUserWithEmailAndPassword, useSendEmailVerification, useUpdateProfile } from 'react-firebase-hooks/auth';
-import { Link } from 'react-router-dom';
+import { useCreateUserWithEmailAndPassword, useSendEmailVerification, useSignInWithGoogle, useUpdateProfile } from 'react-firebase-hooks/auth';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 import Loading from '../Loading/Loding';
+import SocialLogin from '../Shared/SocialLogin/SocialLogin';
 
 const Register = () => {
+    // page redirect
+    let navigate = useNavigate();
+    let location = useLocation();
+    let from = location.state?.from?.pathname || "/";
     const [
         createUserWithEmailAndPassword,
         user,
@@ -14,6 +19,7 @@ const Register = () => {
     ] = useCreateUserWithEmailAndPassword(auth);
     const [updateProfile, updating, error2] = useUpdateProfile(auth);
     const [sendEmailVerification, sending, error3] = useSendEmailVerification(auth);
+    const [signInWithGoogle, user1, loading1, error4] = useSignInWithGoogle(auth);
     const emailRef = useRef('');
     const nameRef = useRef('');
     const passwordRef = useRef('');
@@ -26,21 +32,28 @@ const Register = () => {
         const password = passwordRef.current.value;
         const confirmPassword = confirmPasswordRef.current.value;
         if (password !== confirmPassword) {
-            setError1('Your password did not matched!!!')
+            setError1('Your password did not matched!!!');
         }
         else {
             await createUserWithEmailAndPassword(email, password);
             await updateProfile({ displayName: name, email: email });
             sendEmailVerification();
             event.target.reset();
+            navigate(from, { replace: true })
 
+        }
+    }
+    const handleGoogleSignIn = async () => {
+        await signInWithGoogle();
+        if (!error1) {
+            navigate(from, { replace: true })
         }
     }
     return (
         <>
             {
                 (loading || updating) ? <Loading></Loading> :
-                    <div className='w-50 mx-auto p-3 form-container mt-5'>
+                    <div className='w-50 mx-auto p-3 form-container my-5'>
                         <h2 className='text-center'>Please Register</h2>
                         <Form onSubmit={handleSubmit}>
                             <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -62,7 +75,7 @@ const Register = () => {
                             {/* display error section  */}
                             <div>
                                 {
-                                    error1 && <p className='text-danger'>{error}</p>
+                                    error1 && <p className='text-danger'>{error1}</p>
                                 }
                             </div>
                             <div>
@@ -72,6 +85,7 @@ const Register = () => {
                                 Register
                             </Button>
                         </Form>
+                        <SocialLogin handleGoogleSignIn={handleGoogleSignIn}></SocialLogin>
                     </div>
             }
         </>

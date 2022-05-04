@@ -28,7 +28,7 @@ const AddItem = () => {
             })
     };
     return (
-        <div className='custom-responsive-w form-container mx-auto mt-3 px-4 py-2'>
+        <div className='custom-responsive-w form-container mx-auto my-5 px-4 py-2'>
             {
                 loading && <Loading></Loading>
             }

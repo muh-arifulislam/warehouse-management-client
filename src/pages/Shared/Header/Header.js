@@ -44,9 +44,7 @@ const Header = () => {
                                         <Link className='auth-btn' to='/login'>Login</Link>
 
                             }
-                            {
-                                user && <Link id='user-btn' to='/user'><FontAwesomeIcon icon={faUser}></FontAwesomeIcon></Link>
-                            }
+                            <Link id='user-btn' to='/user'><FontAwesomeIcon icon={faUser}></FontAwesomeIcon></Link>
                         </Nav>
                     </Navbar.Collapse>
                 </Container>

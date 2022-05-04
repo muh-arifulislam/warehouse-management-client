@@ -12,6 +12,7 @@ import RequireAuth from './pages/RequireAuth/RequireAuth';
 import Inventory from './pages/Inventory/Inventory';
 import AddItem from './pages/AddItem/AddItem';
 import Footer from './pages/Shared/Footer/Footer';
+import User from './pages/User/User';
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/register' element={<Register></Register>}></Route>
         <Route path='/add-new-item' element={<AddItem></AddItem>}></Route>
+        <Route path='/user' element={<User></User>}></Route>
         <Route path='*' element={<NotFound></NotFound>}></Route>
       </Routes>
       <Footer></Footer>
