@@ -7,7 +7,7 @@ const ServiceCount = () => {
     const [stockItem, setStockItem] = useState(0);
     const [deliveredItem, setDeliveredItem] = useState(0);
     useEffect(() => {
-        fetch('http://localhost:5000/total-item')
+        fetch('https://limitless-falls-03357.herokuapp.com/total-item')
             .then(res => res.json())
             .then(data => {
                 setStockItem(data.totalItem);

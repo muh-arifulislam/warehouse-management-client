@@ -3,3 +3,9 @@
     box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
     border-radius: 5px;
 }
+
+.reset-password:hover {
+    color: rgb(92, 92, 241);
+    text-decoration: underline;
+    cursor: pointer;
+}

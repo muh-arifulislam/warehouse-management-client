@@ -14,8 +14,8 @@ const MyCarousel = () => {
                         alt="First slide"
                     />
                     <Carousel.Caption>
-                        <h3>First slide label</h3>
-                        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                        <h3>Wide storage</h3>
+                        <p>We have 1200 square feet area of store.</p>
                     </Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item>
@@ -26,8 +26,8 @@ const MyCarousel = () => {
                     />
 
                     <Carousel.Caption>
-                        <h3>Second slide label</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        <h3>Product management</h3>
+                        <p>We have an experience product management team </p>
                     </Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item>
@@ -38,8 +38,8 @@ const MyCarousel = () => {
                     />
 
                     <Carousel.Caption>
-                        <h3>Third slide label</h3>
-                        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                        <h3>Delivery Services</h3>
+                        <p>Our delivery team can be deliver your product in any time</p>
                     </Carousel.Caption>
                 </Carousel.Item>
             </Carousel>
