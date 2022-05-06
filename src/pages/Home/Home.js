@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import MyCarousel from '../MyCarousel/MyCarousel';
 import Items from '../Shared/Items/Items';
 import SentEmail from './SentEmail/SentEmail';
+import ServiceCount from './ServiceCount/ServiceCount';
 
 const Home = () => {
     return (
@@ -16,6 +17,7 @@ const Home = () => {
                     </button>
                 </Link>
             </div>
+            <ServiceCount></ServiceCount>
             <SentEmail></SentEmail>
         </div>
     );
